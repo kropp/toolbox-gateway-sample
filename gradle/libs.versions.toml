@@ -1,0 +1,24 @@
+[versions]
+gateway = "2.1.0.15856"
+kotlin = "1.8.10"
+coroutines = "1.6.4"
+serialization = "1.5.0"
+okhttp = "4.10.0"
+slf4j = "2.0.3"
+
+[libraries]
+kotlin-stdlib = { module = "com.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+gateway-api = { module = "com.jetbrains.toolbox.gateway:gateway-api", version.ref = "gateway" }
+coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "serialization" }
+serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
+serialization-json-okio = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json-okio", version.ref = "serialization" }
+okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+slf4j = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
+
+[bundles]
+serialization = [ "serialization-core", "serialization-json", "serialization-json-okio" ]
+
+[plugins]
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
