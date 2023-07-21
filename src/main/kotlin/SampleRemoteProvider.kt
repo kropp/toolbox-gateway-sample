@@ -1,5 +1,6 @@
 package toolbox.gateway.sample
 
+import com.jetbrains.toolbox.gateway.ProviderVisibilityState
 import com.jetbrains.toolbox.gateway.RemoteEnvironmentConsumer
 import com.jetbrains.toolbox.gateway.RemoteProvider
 import kotlinx.coroutines.*
@@ -54,7 +55,7 @@ class SampleRemoteProvider(
     override fun canCreateNewEnvironments(): Boolean = true
     override fun isSingleEnvironment(): Boolean = false
 
-    override fun setVisibilityState(p0: Boolean, p1: Boolean) {}
+    override fun setVisibilityState(visibilityState: ProviderVisibilityState) {}
 
     override fun addEnvironmentsListener(listener: RemoteEnvironmentConsumer) {}
     override fun removeEnvironmentsListener(listener: RemoteEnvironmentConsumer) {}

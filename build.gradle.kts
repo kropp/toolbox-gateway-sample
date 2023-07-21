@@ -63,11 +63,11 @@ val copyPlugin by tasks.creating(Copy::class.java) {
     }
 
     from(filteredClasspath) {
-        include("*.jar")
+        include("$pluginId.jar")
     }
 
     from("src/main/resources") {
-        include("extensions.json")
+        include("extension.json")
         include("icon.svg")
     }
 

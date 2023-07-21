@@ -1,9 +1,9 @@
 package toolbox.gateway.sample
 
+import com.jetbrains.toolbox.gateway.EnvironmentVisibilityState
 import com.jetbrains.toolbox.gateway.RemoteEnvironmentPropertiesConsumer
 import com.jetbrains.toolbox.gateway.RemoteProviderEnvironment
 import com.jetbrains.toolbox.gateway.environments.EnvironmentContentsView
-import com.jetbrains.toolbox.gateway.environments.ManualEnvironmentContentsView
 import java.util.concurrent.CompletableFuture
 
 class SampleRemoteEnvironment(
@@ -22,7 +22,6 @@ class SampleRemoteEnvironment(
         return CompletableFuture.completedFuture(SampleEnvironmentContentsView())
     }
 
-    override fun setVisible(p0: Boolean, p1: Boolean) {
-
+    override fun setVisible(visibilityState: EnvironmentVisibilityState) {
     }
 }
