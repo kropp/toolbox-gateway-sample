@@ -25,7 +25,7 @@ class SampleRemoteProvider(
             val request = Request.Builder()
                 .get()
                 .url("https://kropp.dev/gateway.json")
-                .cacheControl(CacheControl.FORCE_NETWORK)
+//                .cacheControl(CacheControl.FORCE_NETWORK)
                 .build()
             while (true) {
                 try {
