@@ -51,6 +51,9 @@ class SampleRemoteProvider(
     override fun close() {}
 
     override fun getName(): String = "Sample Provider"
+    override fun getSvgIcon(): ByteArray {
+        return this::class.java.getResourceAsStream("/icon.svg")?.readAllBytes() ?: byteArrayOf()
+    }
 
     override fun canCreateNewEnvironments(): Boolean = true
     override fun isSingleEnvironment(): Boolean = false

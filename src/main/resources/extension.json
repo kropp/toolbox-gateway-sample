@@ -5,10 +5,15 @@
     "readableName": "Sample plugin",
     "description": "This plugin is a sample of Remote Development integration into JetBrains Toolbox App",
     "vendor": "Toolbox + Gateway",
-    "url": "https://github.com/kropp/toolbox-gateway-sample"
+    "url": "https://github.com/kropp/toolbox-gateway-sample",
+    "backgroundColors": {
+      "start": "#fdb60d",
+      "top": "#ff318c",
+      "end": "#6b57ff"
+    }
   },
   "compatibleVersionRange": {
-    "from": "2.0",
-    "to": "2.1.0.0"
+    "from": "2.1",
+    "to": "2.999"
   }
 }
