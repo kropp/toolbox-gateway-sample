@@ -34,7 +34,7 @@ val assemblePlugin by tasks.registering(Jar::class) {
     from(sourceSets.main.get().output)
 }
 
-val copyPlugin by tasks.creating(Copy::class.java) {
+val copyPlugin by tasks.creating(Sync::class.java) {
     dependsOn(assemblePlugin)
 
     val userHome = System.getProperty("user.home").let { Path.of(it) }
@@ -53,18 +53,8 @@ val copyPlugin by tasks.creating(Copy::class.java) {
     } / "plugins"
 
     val targetDir = pluginsDir / pluginId
-    val runtimeClasspath by configurations.getting
 
     from(assemblePlugin.get().outputs.files)
-
-    val excludedJarPrefixes = listOf("gateway-api")
-    val filteredClasspath = runtimeClasspath.filter { f ->
-        !excludedJarPrefixes.any { p -> f.name.startsWith(p) }
-    }
-
-    from(filteredClasspath) {
-        include("$pluginId.jar")
-    }
 
     from("src/main/resources") {
         include("extension.json")
