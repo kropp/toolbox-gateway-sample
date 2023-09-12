@@ -6,7 +6,6 @@ import com.jetbrains.toolbox.gateway.RemoteProvider
 import kotlinx.coroutines.*
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.okio.decodeFromBufferedSource
-import okhttp3.CacheControl
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.slf4j.LoggerFactory
@@ -58,7 +57,7 @@ class SampleRemoteProvider(
     override fun canCreateNewEnvironments(): Boolean = true
     override fun isSingleEnvironment(): Boolean = false
 
-    override fun setVisibilityState(visibilityState: ProviderVisibilityState) {}
+    override fun setVisible(visibilityState: ProviderVisibilityState) {}
 
     override fun addEnvironmentsListener(listener: RemoteEnvironmentConsumer) {}
     override fun removeEnvironmentsListener(listener: RemoteEnvironmentConsumer) {}

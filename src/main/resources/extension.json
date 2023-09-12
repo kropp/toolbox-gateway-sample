@@ -7,9 +7,9 @@
     "vendor": "Toolbox + Gateway",
     "url": "https://github.com/kropp/toolbox-gateway-sample",
     "backgroundColors": {
-      "start": "#fdb60d",
-      "top": "#ff318c",
-      "end": "#6b57ff"
+      "start": { "hex": "#fdb60d", "opacity": 0.6 },
+      "top": { "hex": "#ff318c", "opacity": 0.6 },
+      "end": { "hex": "#6b57ff", "opacity": 0.6 }
     }
   },
   "compatibleVersionRange": {
