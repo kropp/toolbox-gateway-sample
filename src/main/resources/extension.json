@@ -1,6 +1,6 @@
 {
   "id": "sample",
-  "version": "0.1",
+  "version": "0.0.1",
   "meta": {
     "readableName": "Sample plugin",
     "description": "This plugin is a sample of Remote Development integration into JetBrains Toolbox App",
@@ -12,8 +12,8 @@
       "end": { "hex": "#6b57ff", "opacity": 0.6 }
     }
   },
-  "apiVersion": "0.1",
+  "apiVersion": "0.1.0",
   "compatibleVersionRange": {
-    "from": "2.1"
+    "from": "2.1.0"
   }
 }
