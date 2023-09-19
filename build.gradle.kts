@@ -1,3 +1,5 @@
+import com.github.jk1.license.filter.ExcludeTransitiveDependenciesFilter
+import com.github.jk1.license.render.JsonReportRenderer
 import org.jetbrains.kotlin.com.intellij.openapi.util.SystemInfoRt
 import java.nio.file.Path
 import kotlin.io.path.div
@@ -6,6 +8,7 @@ plugins {
     alias(libs.plugins.kotlin)
     alias(libs.plugins.serialization)
     `java-library`
+    alias(libs.plugins.dependency.license.report)
 }
 
 repositories {
@@ -19,6 +22,13 @@ dependencies {
     implementation(libs.bundles.serialization)
     implementation(libs.coroutines.core)
     implementation(libs.okhttp)
+}
+
+licenseReport {
+    renderers = arrayOf(JsonReportRenderer("dependencies.json"))
+    filters = arrayOf(ExcludeTransitiveDependenciesFilter())
+    // jq script to convert to our format:
+    // `jq '[.dependencies[] | {name: .moduleName, version: .moduleVersion, url: .moduleUrl, license: .moduleLicense, licenseUrl: .moduleLicenseUrl}]' < build/reports/dependency-license/dependencies.json > src/main/resources/dependencies.json`
 }
 
 tasks.compileKotlin {

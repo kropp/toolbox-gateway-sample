@@ -5,6 +5,7 @@ coroutines = "1.7.3"
 serialization = "1.5.0"
 okhttp = "4.10.0"
 slf4j = "2.0.3"
+dependency-license-report = "2.5"
 
 [libraries]
 kotlin-stdlib = { module = "com.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
@@ -22,3 +23,4 @@ serialization = [ "serialization-core", "serialization-json", "serialization-jso
 [plugins]
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+dependency-license-report = { id = "com.github.jk1.dependency-license-report", version.ref = "dependency-license-report" }
