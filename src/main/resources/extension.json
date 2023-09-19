@@ -12,8 +12,8 @@
       "end": { "hex": "#6b57ff", "opacity": 0.6 }
     }
   },
+  "apiVersion": "0.1",
   "compatibleVersionRange": {
-    "from": "2.1",
-    "to": "2.999"
+    "from": "2.1"
   }
 }
