@@ -6,6 +6,7 @@ serialization = "1.5.0"
 okhttp = "4.10.0"
 slf4j = "2.0.3"
 dependency-license-report = "2.5"
+marketplace-client = "2.0.38"
 
 [libraries]
 kotlin-stdlib = { module = "com.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
@@ -16,6 +17,8 @@ serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-jso
 serialization-json-okio = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json-okio", version.ref = "serialization" }
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 slf4j = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
+
+marketplace-client = { module = "org.jetbrains.intellij:plugin-repository-rest-client", version.ref = "marketplace-client" }
 
 [bundles]
 serialization = [ "serialization-core", "serialization-json", "serialization-json-okio" ]

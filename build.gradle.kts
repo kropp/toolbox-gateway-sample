@@ -1,5 +1,6 @@
 import com.github.jk1.license.filter.ExcludeTransitiveDependenciesFilter
 import com.github.jk1.license.render.JsonReportRenderer
+import org.jetbrains.intellij.pluginRepository.PluginRepositoryFactory
 import org.jetbrains.kotlin.com.intellij.openapi.util.SystemInfoRt
 import java.nio.file.Path
 import kotlin.io.path.div
@@ -9,6 +10,12 @@ plugins {
     alias(libs.plugins.serialization)
     `java-library`
     alias(libs.plugins.dependency.license.report)
+}
+
+buildscript {
+    dependencies {
+        classpath(libs.marketplace.client)
+    }
 }
 
 repositories {
@@ -37,7 +44,8 @@ tasks.compileKotlin {
     )
 }
 
-val pluginId = "sample"
+val pluginId = "dev.kropp.toolbox.sample"
+val pluginVersion = "0.0.1"
 
 val assemblePlugin by tasks.registering(Jar::class) {
     archiveBaseName.set(pluginId)
@@ -68,8 +76,38 @@ val copyPlugin by tasks.creating(Sync::class.java) {
 
     from("src/main/resources") {
         include("extension.json")
+        include("dependencies.json")
         include("icon.svg")
     }
 
     into(targetDir)
+}
+
+val pluginZip by tasks.creating(Zip::class) {
+    dependsOn(assemblePlugin)
+
+    from(assemblePlugin.get().outputs.files)
+    from("src/main/resources") {
+        include("extension.json")
+        include("dependencies.json")
+    }
+    from("src/main/resources") {
+        include("icon.svg")
+        rename("icon.svg", "pluginIcon.svg")
+    }
+    archiveBaseName.set("$pluginId-$pluginVersion")
+}
+
+val uploadPlugin by tasks.creating {
+    dependsOn(pluginZip)
+
+    doLast {
+        val instance = PluginRepositoryFactory.create("https://plugins.jetbrains.com", project.property("pluginMarketplaceToken").toString())
+
+        // first upload
+        // instance.uploader.uploadNewPlugin(pluginZip.outputs.files.singleFile, listOf("toolbox", "gateway"), LicenseUrl.APACHE_2_0, ProductFamily.TOOLBOX)
+
+        // subsequent updates
+        instance.uploader.upload("dev.kropp.toolbox.sample", pluginZip.outputs.files.singleFile)
+    }
 }
